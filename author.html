@@ -18,14 +18,16 @@
     <input type="button" onclick="checkAuthor()" value="Check the guess">
 </form>
 
-<div id="result"></div>
+<p id="result"></p>
 
 <script> 
    let good =0;
    let oops =0;
+
    function checkAuthor(){
-        const hiddenauthor = document.getElementById("hiddenauthor").value;
-        const guessauthor = document.getElementById("guessauthor").value;
+        console.log("Getting form values")
+        hiddenauthor = document.getElementById("hiddenauthor").value;
+        guessauthor = document.getElementById("guessauthor").value;
 
         if(hiddenauthor === guessauthor){
             good++;
@@ -36,8 +38,8 @@
             alert("Sorry");
         }
 
-        const result = document.getElementById("result");
-        result.innerHTML = `Correct: ${good}, Incorrect: ${oops}`;
+        result = document.getElementById("result");
+        result.innerHTML = `Right: ${good}, Wrong: ${oops}`;
 }
 </script>
 
