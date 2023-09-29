@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Author Entries</title>
+    </head>
+ 
+<body>
+
+<h2>Author entry by Khaja Nayab Rasool Shaik</h2>
+
+<form>
+    <label for="hiddenauthor">The hidden author name</label>
+    <input type ="password" id="hiddenauthor" value="Dickens" min=10 max=50 step=2 value=30> <br>
+
+    <label for="guessauthor">Guess the author</label>
+    <input type ="text" id="guessauthor" autofocus> <br>
+
+    <input type="button" onclick="checkAuthor()" value="Check the guess">
+</form>
+
+<div id="result"></div>
+
+<script> 
+   let good =0;
+   let oops =0;
+   function checkAuthor(){
+        const hiddenauthor = document.getElementById("hiddenauthor").value;
+        const guessauthor = document.getElementById("guessauthor").value;
+
+        if(hiddenauthor === guessauthor){
+            good++;
+            alert("You got it right");
+        }
+        else{
+            oops++;
+            alert("Sorry");
+        }
+
+        const result = document.getElementById("result");
+        result.innerHTML = `Correct: ${good}, Incorrect: ${oops}`;
+}
+</script>
+
+</body>
+</html> 
