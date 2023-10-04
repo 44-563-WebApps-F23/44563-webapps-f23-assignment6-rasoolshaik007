@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Values</title>
+    </head>
  
 <body>
 
-<h2>Getting input</h2>
+    <h2>Tips</h2>
 
-<form>
-    <label for="baseAmount">Enter base amount</label>
-    <input type ="number" id="baseAmount" value=50 min=10 max=50 step=2 value=30> <br>
+    <form>
+        <label for="baseAmount">Enter base amount</label>
+        <input type ="number" id="baseAmount" value=50 min=10 max=50 step=2> 
+        <br>
+        <label for="tipPercent">Enter the tip percent</label>
+        <input type ="text" id="tipPercent" value=15 autofocus> 
+        <br>
+        <input type="button" onclick="tips()" value="Show tip">
+    </form>
 
-    <label for="tipPercent">Enter the tip percent</label>
-    <input type ="text" id="tipPercent" value=15 autofocus> <br>
+    <p id="result"></p>
 
-    <input type="button" onclick="tips()" value="Show tip">
-</form>
-
-
-<p id="result"></p>
-
-<script> 
-function tips(){
-    console.log("Getting form values")
-    baseAmount = parseFloat(document.getElementById("baseAmount").value)
-    tipPercent = parseFloat(document.getElementById("tipPercent").value)
-    result = document.getElementById("result")
-    toShow = " "
+    <script> 
+        function tips(){
+            console.log("Getting form values")
+            baseAmount = parseFloat(document.getElementById("baseAmount").value)
+            tipPercent = parseFloat(document.getElementById("tipPercent").value)
+            result = document.getElementById("result")
+            toShow = " "
     
-    for (let i = 0; i < 5; i++) {
-        var a = tipPercent + i * 4;
-        var c = (baseAmount * a) / 100;
-        toShow += a + "% is " + c + " ; " ;
-    }
-    document.getElementById("result").innerHTML = "Tips are: " + toShow;
-}
-</script>
+            for (let i = 0; i < 5; i++) {
+                var a = tipPercent + i * 4;
+                var c = (baseAmount * a) / 100;
+                toShow += a + "% is " + c + " ; " ;
+            }
+            document.getElementById("result").innerHTML = "Tips are: " + toShow;
+        }
+    </script>
+
+    <h2>Radio Buttons</h2>
+
+    <form>
+        <input type="radio" id="sum" value="sum" onclick="chooseOp()">
+        <label for="sum">sum</label>
+        <br>
+        <input type="radio" id="diff" value="difference" onclick="chooseOp()">
+        <label for="diff">difference</label>
+        <br>
+        <input type="radio" id="mult" value="product" onclick="chooseOp()">
+        <label for="mult">multiply</label>
+    </form>
+
+    <p id="operations"></p>
+
+    <script>
+        function chooseOp(){
+            console.log("Getting form values")
+            baseAmount = parseFloat(document.getElementById("baseAmount").value)
+            tipPercent = parseFloat(document.getElementById("tipPercent").value)
+            total = document.getElementById("operations")
+
+            if(document.getElementById("sum").checked){
+                total.innerHTML= "sum of "+ baseAmount +" and "+ tipPercent +" is "+(baseAmount + tipPercent)
+            }
+
+            else if(document.getElementById("diff").checked){
+                total.innerHTML= "diff of "+ baseAmount +" and "+ tipPercent +" is "+(baseAmount - tipPercent)
+            }
+      
+            else if(document.getElementById("mult").checked){
+                total.innerHTML= "product of "+ baseAmount +" and "+ tipPercent +" is "+(baseAmount * tipPercent)
+            }
+        }
+    </script>
 
 </body>
 </html> 
